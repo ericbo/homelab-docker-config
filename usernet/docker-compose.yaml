@@ -1,0 +1,53 @@
+version: "2"
+services:
+  sonarr:
+    image: linuxserver/sonarr
+    container_name: usernet_sonarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/New_York
+      - UMASK_SET=022 #optional
+    volumes:
+      - ./config/sonarr:/config
+      - /media/media/TV Shows:/tv
+      - ./downloads:/downloads
+    restart: unless-stopped
+  radarr:
+    image: linuxserver/radarr
+    container_name: usernet_radarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/New_York
+      - UMASK_SET=022 #optional
+    volumes:
+      - ./config/radarr:/config
+      - /media/media/Movies:/movies
+      - ./downloads:/downloads
+    restart: unless-stopped
+  nzbget:
+    image: linuxserver/nzbget
+    container_name: usernet_nzbget
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/New_York
+    volumes:
+      - ./config/nzbget:/config
+      - ./downloads:/downloads
+    restart: unless-stopped
+  proxy:
+    container_name: usernet_proxy
+    image: nginx
+    restart: always
+    depends_on:
+      - sonarr
+      - radarr
+      - nzbget
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./config/proxy:/etc/nginx
+      - ./config/ssl:/etc/ssl/private

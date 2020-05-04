@@ -1,0 +1,19 @@
+version: "2"
+services:
+  plex:
+    image: linuxserver/plex
+    container_name: plex
+    network_mode: host
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - VERSION=docker
+      - UMASK_SET=022
+#      - PLEX_CLAIM= #optional
+    volumes:
+      - ./config:/config
+      - /media/media/TV Shows:/media/tv
+      - /media/media/Movies:/media/movies
+      - /media/media/music:/media/music
+      - /media/media/Memes:/media/memes
+    restart: unless-stopped

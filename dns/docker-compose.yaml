@@ -1,0 +1,12 @@
+version: '2'
+services:
+    dns:
+        restart: always
+        image: strm/dnsmasq
+        volumes:
+            - ./dnsmasq.conf:/etc/dnsmasq.conf
+        ports:
+            - "192.168.2.106:53:53/udp"
+            - "127.0.0.1:53:53/udp"
+        cap_add:
+            - NET_ADMIN

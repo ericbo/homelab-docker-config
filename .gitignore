@@ -1,0 +1,12 @@
+# Ignore everything by default
+*
+
+# Whitelist Files
+!README.md
+!.gitignore
+!docker-compose.yaml
+
+# Whitelist Folders
+!/plex/
+!/usernet/
+!/dns/

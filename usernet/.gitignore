@@ -1,0 +1,12 @@
+# Whitelist Files
+!*.conf
+
+# Blacklist Files (contains sensative info, should be removed in future updates)
+ssl.conf
+usernet.conf
+
+# Whitelist Folders
+!/config/
+!/config/proxy/
+!/config/proxy/conf.d/
+!/config/proxy/conf.d/sites-available/
