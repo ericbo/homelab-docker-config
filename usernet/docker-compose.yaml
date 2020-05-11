@@ -13,6 +13,8 @@ services:
       - /media/media/TV Shows:/tv
       - ./downloads:/downloads
     restart: unless-stopped
+    networks:
+      - private
   radarr:
     image: linuxserver/radarr
     container_name: usernet_radarr
@@ -26,6 +28,8 @@ services:
       - /media/media/Movies:/movies
       - ./downloads:/downloads
     restart: unless-stopped
+    networks:
+      - private
   nzbget:
     image: linuxserver/nzbget
     container_name: usernet_nzbget
@@ -37,6 +41,8 @@ services:
       - ./config/nzbget:/config
       - ./downloads:/downloads
     restart: unless-stopped
+    networks:
+      - private
   proxy:
     container_name: usernet_proxy
     image: nginx
@@ -51,3 +57,17 @@ services:
     volumes:
       - ./config/proxy:/etc/nginx
       - ./config/ssl:/etc/ssl/private
+    networks:
+      - public
+      - private
+networks:
+  private:
+  public:
+    driver: macvlan
+    driver_opts:
+      parent: eth0
+    ipam:
+      config:
+        - subnet: 192.168.2.1/24
+          gateway: 192.168.2.1
+          ip_range: 192.168.2.10/32
