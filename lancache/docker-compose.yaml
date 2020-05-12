@@ -1,0 +1,36 @@
+version: '3'
+services:
+  dns:
+    image: lancachenet/lancache-dns:latest
+    env_file: .env
+    restart: unless-stopped
+    ports:
+      - ${DNS_BIND_IP}:53:53/udp
+    networks:
+      private:
+      public:
+        ipv4_address: ${DNS_BIND_IP}
+  sniproxy:
+    image: lancachenet/sniproxy:latest
+    env_file: .env
+    restart: unless-stopped
+    ports:
+      - 443:443/tcp
+    networks:
+      - private
+  monolithic:
+    image: lancachenet/monolithic:latest
+    env_file: .env
+    restart: unless-stopped
+    ports:
+      - 80:80/tcp
+    volumes:
+      - ${CACHE_ROOT}/cache:/data/cache
+      - ${CACHE_ROOT}/logs:/data/logs
+    networks:
+      - private
+networks:
+  private:
+  public:
+    external:
+      name: public

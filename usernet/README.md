@@ -13,5 +13,8 @@ each docker-compose file an IP address which can then be mapped to my DNS server
 - Enabled DNS for macvlans (I prefer to assign static IPs from my router, preventing IP conflics due to human error).
 
 # Sources
-http://tonylawrence.com/posts/unix/synology/free-your-synology-ports/
-https://fardog.io/blog/2017/12/30/client-side-certificate-authentication-with-nginx/
+- http://tonylawrence.com/posts/unix/synology/free-your-synology-ports/
+- https://fardog.io/blog/2017/12/30/client-side-certificate-authentication-with-nginx/
+- https://collabnix.com/2-minutes-to-docker-macvlan-networking-a-beginners-guide/
+- https://docs.docker.com/compose/compose-file/compose-file-v2/#ipv4_address-ipv6_address
+- https://docs.docker.com/compose/networking/#use-a-pre-existing-network

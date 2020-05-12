@@ -58,16 +58,11 @@ services:
       - ./config/proxy:/etc/nginx
       - ./config/ssl:/etc/ssl/private
     networks:
-      - public
-      - private
+      private:
+      public:
+        ipv4_address: 192.168.2.10
 networks:
   private:
   public:
-    driver: macvlan
-    driver_opts:
-      parent: eth0
-    ipam:
-      config:
-        - subnet: 192.168.2.1/24
-          gateway: 192.168.2.1
-          ip_range: 192.168.2.10/32
+    external:
+      name: public
