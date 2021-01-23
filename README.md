@@ -20,10 +20,10 @@ move to an rural area has pushed me to download the resources I use the most. Be
 doing system administration as a hobby, the majority of my services will be mirrors for code/distro/documentation
 repositories.
 
-- [] Wikipedia mirror
-- [] apt-mirror for Debian based distros
-- [] Python pip mirror
-- [] PHP Packagist mirror
-- [] Java Maven mirror
-- [] C++ conan mirror (never used conan for public libs, so this will be fun)
-- [] Steam/Battle.net/Uplay/Origin mirrors
+- [ ] Wikipedia mirror
+- [✓] apt-mirror for Debian based distros
+- [ ] Python pip mirror
+- [ ] PHP Packagist mirror
+- [ ] Java Maven mirror
+- [ ] C++ conan mirror (never used conan for public libs, so this will be fun)
+- [ ] Steam/Battle.net/Uplay/Origin mirrors
